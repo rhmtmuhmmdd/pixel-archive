@@ -9,278 +9,198 @@
 
 <style>
 :root{
-    --dark:#0b1c2d;
-    --accent:#6fb1c7;
-    --light:#f5f7fa;
-    --card:#ffffff;
+  --fb-blue:#1877f2;
+  --bg:#f0f2f5;
+  --card:#ffffff;
+  --text:#050505;
+  --muted:#65676b;
+  --radius:12px;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
-    font-family:'Montserrat',sans-serif;
-    background:linear-gradient(180deg,#e9f3f7,#dcecf3);
-    color:#1f2933;
-    line-height:1.7;
+  font-family:'Montserrat',sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
+/* HEADER */
 header{
-    position:fixed;
-    top:0;
-    width:100%;
-    padding:1rem 2rem;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(11,28,45,.85);
-    backdrop-filter:blur(10px);
-    z-index:1000;
+  position:fixed;
+  top:0;
+  width:100%;
+  background:#fff;
+  border-bottom:1px solid #ddd;
+  z-index:1000;
+  padding:.8rem 1.5rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .logo{
-    font-size:1.4rem;
-    font-weight:700;
-    color:#fff;
+  color:var(--fb-blue);
+  font-weight:700;
+  font-size:1.4rem;
 }
 
 nav ul{
-    display:flex;
-    gap:2rem;
-    list-style:none;
+  list-style:none;
+  display:flex;
+  gap:1.5rem;
 }
 
 nav a{
-    color:#fff;
-    font-weight:600;
-    position:relative;
+  color:var(--muted);
+  font-weight:600;
+  text-decoration:none;
 }
 
-nav a::after{
-    content:'';
-    position:absolute;
-    left:0;
-    bottom:-5px;
-    width:0;
-    height:2px;
-    background:var(--accent);
-    transition:.3s;
-}
-
-nav a:hover::after{
-    width:100%;
-}
-
-.hamburger{
-    display:none;
-    flex-direction:column;
-    cursor:pointer;
-}
-
-.hamburger div{
-    width:25px;
-    height:3px;
-    background:#fff;
-    margin:4px 0;
-}
+nav a:hover{color:var(--fb-blue)}
 
 /* HERO */
 .hero{
-    height:100vh;
-    background:url('SampulLatimojong.jpg') center/cover fixed;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position:relative;
+  margin-top:70px;
+  height:60vh;
+  background:url('SampulLatimojong.jpg') center/cover;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
 }
 
 .hero::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.65));
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.6),rgba(0,0,0,.1));
 }
 
 .hero-content{
-    position:relative;
-    z-index:1;
-    color:#fff;
-    max-width:800px;
-    padding:2rem;
-    animation:fadeUp 1.2s ease;
+  position:relative;
+  color:#fff;
+  padding:2rem;
+  max-width:700px;
 }
 
-.hero h1{
-    font-size:3rem;
-    margin-bottom:1rem;
-}
-
-.hero p{
-    opacity:.9;
-    margin-bottom:2.5rem;
-}
+.hero h1{font-size:2.4rem}
+.hero p{opacity:.9;margin:1rem 0}
 
 .cta-button{
-    background:var(--accent);
-    color:#0b1c2d;
-    padding:.9rem 2.2rem;
-    border:none;
-    border-radius:30px;
-    font-weight:700;
-    cursor:pointer;
-    margin:.4rem;
-    transition:.3s;
+  background:var(--fb-blue);
+  color:#fff;
+  border:none;
+  padding:.6rem 1.5rem;
+  border-radius:999px;
+  font-weight:600;
+  cursor:pointer;
+  margin-right:.5rem;
 }
 
-.cta-button:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
-}
-
-/* SECTION */
+/* FEED */
 .section{
-    max-width:1200px;
-    margin:auto;
-    padding:6rem 2rem 4rem;
+  max-width:680px;
+  margin:auto;
+  padding:2rem 1rem;
 }
 
 .section h2{
-    text-align:center;
-    margin-bottom:3rem;
-    font-size:2.2rem;
+  font-size:1.3rem;
+  color:var(--muted);
+  margin-bottom:1rem;
 }
 
-/* CARD GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:2rem;
-}
-
+/* POST CARD */
 .card{
-    background:var(--card);
-    border-radius:16px;
-    overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-    transition:.4s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
+  background:var(--card);
+  border-radius:var(--radius);
+  margin-bottom:1.5rem;
+  box-shadow:0 1px 2px rgba(0,0,0,.1);
+  overflow:hidden;
 }
 
 .card img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
+  width:100%;
+  height:320px;
+  object-fit:cover;
 }
 
 .card h3{
-    padding:1rem 1.2rem .5rem;
+  padding:1rem 1rem .3rem;
 }
 
 .card p{
-    padding:0 1.2rem 1.5rem;
-    font-size:.95rem;
-    opacity:.85;
+  padding:0 1rem 1rem;
+  color:var(--muted);
+  font-size:.95rem;
 }
 
 /* GALERI */
-.galeri,.blog{
-    display:none;
-}
-
-.galeri.show,.blog.show{
-    display:block;
-}
+.galeri,.blog{display:none}
+.galeri.show,.blog.show{display:block}
 
 .carousel{
-    display:flex;
-    gap:1rem;
-    overflow-x:auto;
-    padding-bottom:1rem;
+  display:flex;
+  gap:.8rem;
+  overflow-x:auto;
 }
 
 .carousel img{
-    width:280px;
-    height:180px;
-    object-fit:cover;
-    border-radius:14px;
-    flex-shrink:0;
-    transition:.3s;
-}
-
-.carousel img:hover{
-    transform:scale(1.05);
+  width:220px;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+  flex-shrink:0;
 }
 
 /* BLOG */
 .blog-item{
-    display:flex;
-    gap:1.5rem;
-    margin-bottom:2.5rem;
-    background:#fff;
-    border-radius:16px;
-    padding:1rem;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
+  background:#fff;
+  border-radius:var(--radius);
+  padding:1rem;
+  display:flex;
+  gap:1rem;
+  margin-bottom:1.2rem;
+  box-shadow:0 1px 2px rgba(0,0,0,.1);
 }
 
 .blog-item img{
-    width:160px;
-    height:110px;
-    object-fit:cover;
-    border-radius:12px;
+  width:120px;
+  height:90px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.blog-item p{
+  font-size:.9rem;
+  color:var(--muted);
 }
 
 /* FOOTER */
 .social-links{
-    text-align:center;
-    padding:3rem 0;
+  text-align:center;
+  padding:2rem 0;
 }
 
 .social-links a{
-    margin:0 1rem;
-    font-weight:600;
-    color:#0b1c2d;
+  margin:0 .8rem;
+  color:var(--muted);
+  font-weight:600;
 }
 
-.music-player{
-    display:none;
-}
+.music-player{display:none}
 
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(30px)}
-    to{opacity:1;transform:none}
-}
-
-/* RESPONSIVE */
+/* MOBILE */
 @media(max-width:768px){
-    nav ul{
-        display:none;
-        flex-direction:column;
-        background:#0b1c2d;
-        position:absolute;
-        top:100%;
-        left:0;
-        width:100%;
-        padding:1.5rem;
-    }
-
-    nav ul.show{display:flex}
-    .hamburger{display:flex}
-
-    .hero h1{font-size:2.1rem}
-    .blog-item{flex-direction:column}
+  .hero h1{font-size:1.9rem}
+  .blog-item{flex-direction:column}
 }
 </style>
 </head>
 
 <body>
 
+<!-- MUSIC -->
 <div class="music-player">
 <audio id="bg-music" loop>
 <source src="musik009.mp3" type="audio/mpeg">
@@ -290,10 +210,7 @@ nav a:hover::after{
 <header>
 <div class="logo">rhmtmuhmmdd</div>
 <nav>
-<div class="hamburger" onclick="toggleMenu()">
-<div></div><div></div><div></div>
-</div>
-<ul id="nav-menu">
+<ul>
 <li><a href="#hero">Home</a></li>
 <li><a href="#eksplorasi">Exploration</a></li>
 <li><a href="#galeri">Gallery</a></li>
@@ -311,11 +228,48 @@ nav a:hover::after{
 </div>
 </section>
 
-<script>
-function toggleMenu(){
-document.getElementById('nav-menu').classList.toggle('show')
-}
+<section id="eksplorasi" class="section">
+<h2>Exploration</h2>
 
+<div class="card"><img src="Foto2.jpg"><h3>Puncak Talung</h3><p>Puncak Talung adalah tempat di mana lelah pendakian terbayar oleh hamparan alam yang menenangkan...</p></div>
+<div class="card"><img src="Foto3.jpg"><h3>Lembah Ramma</h3><p>Lembah Ramma terletak di kawasan Gunung Bawakaraeng...</p></div>
+<div class="card"><img src="Foto4.jpg"><h3>Danau Slank</h3><p>Danau Slank adalah danau alami di Gowa...</p></div>
+<div class="card"><img src="Foto5.jpg"><h3>Danau Tanralili</h3><p>Danau Tanralili adalah danau berair jernih...</p></div>
+<div class="card"><img src="Foto6.jpg"><h3>Lembah Lohe</h3><p>Lembah Lohe adalah destinasi alam di Gowa...</p></div>
+
+</section>
+
+<section id="galeri" class="section galeri">
+<h2>Gallery</h2>
+<div class="carousel">
+<img src="Foto30.jpg"><img src="Foto31.jpg"><img src="Foto32.jpg">
+<img src="Foto33.jpg"><img src="Foto34.jpg"><img src="Foto355.jpg">
+<img src="Foto36.jpg"><img src="Foto37.jpg"><img src="Foto38.jpg">
+</div>
+</section>
+
+<section id="blog" class="section blog">
+<h2>2026 Plan</h2>
+
+<div class="blog-item">
+<img src="FotoPlan01.jpg">
+<div><h3>MT.Latimojong</h3><p>Gunung Latimojong merupakan pegunungan tertinggi di Sulawesi...</p></div>
+</div>
+
+<div class="blog-item">
+<img src="FotoPlan02.jpg">
+<div><h3>MT.Bahonglangi</h3><p>Gunung Bahong Langi dikenal sebagai Atap Bone...</p></div>
+</div>
+
+</section>
+
+<div class="social-links">
+<a href="#">Facebook</a>
+<a href="#">Instagram</a>
+<a href="#">TikTok</a>
+</div>
+
+<script>
 function playMusic(){
 document.getElementById('bg-music').play()
 }
