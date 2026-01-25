@@ -45,16 +45,13 @@ header{
   font-size:1.3rem;
 }
 
-/* MENU */
 .menu-btn{
   font-size:1.9rem;
   cursor:pointer;
   display:none;
   opacity:0;
   pointer-events:none;
-  transition:.3s;
 }
-
 .menu-btn.show{
   display:block;
   opacity:1;
@@ -72,7 +69,6 @@ nav a{
   font-weight:600;
   text-decoration:none;
 }
-nav a:hover{color:var(--fb-blue)}
 
 /* HERO */
 .hero{
@@ -83,24 +79,17 @@ nav a:hover{color:var(--fb-blue)}
   display:flex;
   align-items:flex-end;
 }
-
 .hero::before{
   content:'';
   position:absolute;
   inset:0;
   background:linear-gradient(to top,rgba(0,0,0,.6),rgba(0,0,0,.1));
 }
-
 .hero-content{
   position:relative;
   color:#fff;
   padding:2rem;
-  max-width:700px;
 }
-
-.hero h1{font-size:2.3rem}
-.hero p{opacity:.9;margin:1rem 0}
-
 .cta-button{
   background:var(--fb-blue);
   color:#fff;
@@ -119,106 +108,54 @@ nav a:hover{color:var(--fb-blue)}
   padding:2rem 1rem;
 }
 
-.section h2{
-  font-size:1.3rem;
-  color:var(--muted);
-  margin-bottom:1rem;
+.eksplorasi,.galeri,.blog{display:none}
+.eksplorasi.show,.galeri.show,.blog.show{display:block}
+
+/* EXPLORE MENU */
+.explore-tabs{
+  display:flex;
+  gap:.6rem;
+  overflow-x:auto;
+  padding-bottom:.8rem;
+}
+.explore-tabs button{
+  border:none;
+  background:#e4e6eb;
+  padding:.45rem 1.1rem;
+  border-radius:999px;
+  font-weight:600;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.explore-tabs button.active{
+  background:var(--fb-blue);
+  color:#fff;
 }
 
-/* EXPLORATION CARD */
+/* CARD */
 .card{
-  background:var(--card);
-  border-radius:var(--radius);
-  margin-bottom:1.5rem;
+  background:#fff;
+  border-radius:12px;
+  margin-top:1rem;
   box-shadow:0 1px 2px rgba(0,0,0,.1);
   overflow:hidden;
-  transition:.25s;
+  display:none;
 }
-.card:hover{transform:translateY(-4px)}
+.card.show{display:block}
 
 .card img{
   width:100%;
-  height:auto;
-  max-height:420px;
   object-fit:contain;
   background:#000;
 }
+.card h3{padding:1rem .9rem .3rem}
+.card p{padding:0 .9rem 1rem;color:var(--muted)}
 
-.card h3{padding:1rem 1rem .3rem}
-.card p{
-  padding:0 1rem 1rem;
-  color:var(--muted);
-  font-size:.95rem;
-}
-
-/* HIDE SECTIONS */
-.eksplorasi,
-.galeri,
-.blog{
-  display:none;
-}
-
-.eksplorasi.show,
-.galeri.show,
-.blog.show{
-  display:block;
-}
-
-/* GALLERY */
-.carousel{
-  display:flex;
-  gap:.8rem;
-  overflow-x:auto;
-}
-
-.carousel img{
-  width:230px;
-  height:150px;
-  object-fit:cover;
-  border-radius:10px;
-  flex-shrink:0;
-}
-
-/* BLOG */
-.blog-item{
-  background:#fff;
-  border-radius:var(--radius);
-  padding:1rem;
-  display:flex;
-  gap:1rem;
-  margin-bottom:1.2rem;
-  box-shadow:0 1px 2px rgba(0,0,0,.1);
-}
-
-.blog-item img{
-  width:120px;
-  height:90px;
-  object-fit:cover;
-  border-radius:10px;
-}
-
-.blog-item p{
-  font-size:.9rem;
-  color:var(--muted);
-}
-
-/* SOCIAL */
 .social-links{
   text-align:center;
   padding:2rem 0;
 }
 
-.social-links a{
-  margin:0 .8rem;
-  color:var(--fb-blue);
-  font-weight:600;
-  text-decoration:none;
-}
-
-/* MUSIC */
-.music-player{display:none}
-
-/* MOBILE */
 @media(max-width:768px){
   nav{
     position:fixed;
@@ -227,32 +164,20 @@ nav a:hover{color:var(--fb-blue)}
     width:70%;
     height:100vh;
     background:#fff;
-    transition:.3s;
     padding-top:2rem;
-    box-shadow:2px 0 10px rgba(0,0,0,.15);
+    transition:.3s;
   }
   nav.show{left:0}
-
-  nav ul{
-    flex-direction:column;
-    padding-left:1.5rem;
-    gap:1.3rem;
-  }
-
-  .hero h1{font-size:1.8rem}
-  .blog-item{flex-direction:column}
+  nav ul{flex-direction:column;padding-left:1.5rem}
 }
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
-<div class="music-player">
 <audio id="bg-music" loop>
 <source src="musik009.mp3" type="audio/mpeg">
 </audio>
-</div>
 
 <header>
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
@@ -267,67 +192,78 @@ nav a:hover{color:var(--fb-blue)}
   </nav>
 </header>
 
-<section id="hero" class="hero">
-<div class="hero-content">
-<h1>Saves steps in frames</h1>
-<p>Every step has a story, every story is worth remembering.</p>
-<button class="cta-button" onclick="playMusic()">▶️ Play</button>
-<button class="cta-button" onclick="showExploration()">Explore</button>
-</div>
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1>Saves steps in frames</h1>
+    <p>Every step has a story.</p>
+    <button class="cta-button" onclick="showExploration()">Explore</button>
+  </div>
 </section>
 
 <section id="eksplorasi" class="section eksplorasi">
 <h2>Exploration</h2>
 
-<div class="card"><img src="Foto2.jpg"><h3>Puncak Talung</h3><p>Puncak Talung adalah tempat di mana lelah pendakian terbayar oleh hamparan alam yang menenangkan...</p></div>
-<div class="card"><img src="Foto3.jpg"><h3>Lembah Ramma</h3><p>Lembah Ramma terletak di kawasan Gunung Bawakaraeng...</p></div>
-<div class="card"><img src="Foto4.jpg"><h3>Danau Slank</h3><p>Danau Slank adalah danau alami di Gowa...</p></div>
-<div class="card"><img src="Foto5.jpg"><h3>Danau Tanralili</h3><p>Danau Tanralili adalah danau berair jernih...</p></div>
-<div class="card"><img src="Foto6.jpg"><h3>Lembah Lohe</h3><p>Lembah Lohe adalah destinasi alam di Gowa...</p></div>
-</section>
-
-<section id="galeri" class="section galeri">
-<h2>Gallery</h2>
-<div class="carousel">
-<img src="Foto30.jpg"><img src="Foto31.jpg"><img src="Foto32.jpg">
-<img src="Foto33.jpg"><img src="Foto34.jpg"><img src="Foto355.jpg">
-<img src="Foto36.jpg"><img src="Foto37.jpg"><img src="Foto38.jpg">
-</div>
-</section>
-
-<section id="blog" class="section blog">
-<h2>2026 Plan</h2>
-
-<div class="blog-item">
-<img src="FotoPlan01.jpg">
-<div><h3>MT.Latimojong</h3><p>Gunung Latimojong merupakan pegunungan tertinggi di Sulawesi...</p></div>
+<div class="explore-tabs">
+  <button onclick="showExplore('talung',this)">Talung</button>
+  <button onclick="showExplore('ramma',this)">Ramma</button>
+  <button onclick="showExplore('slank',this)">Slank</button>
+  <button onclick="showExplore('tanralili',this)">Tanralili</button>
+  <button onclick="showExplore('lohe',this)">Lohe</button>
 </div>
 
-<div class="blog-item">
-<img src="FotoPlan02.jpg">
-<div><h3>MT.Bahonglangi</h3><p>Gunung Bahong Langi dikenal sebagai Atap Bone...</p></div>
+<div class="card" data-explore="talung">
+  <img src="Foto2.jpg">
+  <h3>Puncak Talung</h3>
+  <p>Puncak Talung adalah tempat di mana lelah pendakian terbayar...</p>
 </div>
+
+<div class="card" data-explore="ramma">
+  <img src="Foto3.jpg">
+  <h3>Lembah Ramma</h3>
+  <p>Lembah Ramma terletak di kawasan Gunung Bawakaraeng...</p>
+</div>
+
+<div class="card" data-explore="slank">
+  <img src="Foto4.jpg">
+  <h3>Danau Slank</h3>
+  <p>Danau Slank adalah danau alami di Gowa...</p>
+</div>
+
+<div class="card" data-explore="tanralili">
+  <img src="Foto5.jpg">
+  <h3>Danau Tanralili</h3>
+  <p>Danau Tanralili adalah danau berair jernih...</p>
+</div>
+
+<div class="card" data-explore="lohe">
+  <img src="Foto6.jpg">
+  <h3>Lembah Lohe</h3>
+  <p>Lembah Lohe adalah destinasi alam di Gowa...</p>
+</div>
+
 </section>
 
 <div class="social-links">
-<a href="https://facebook.com/USERNAME" target="_blank">Facebook</a>
-<a href="https://instagram.com/USERNAME" target="_blank">Instagram</a>
-<a href="https://tiktok.com/@USERNAME" target="_blank">TikTok</a>
+  <a href="https://instagram.com/USERNAME" target="_blank">Instagram</a>
 </div>
 
 <script>
-function playMusic(){
-  document.getElementById('bg-music').play()
-}
-
 function showExploration(){
   document.getElementById('eksplorasi').classList.add('show')
-  document.getElementById('galeri').classList.add('show')
-  document.getElementById('blog').classList.add('show')
   document.querySelector('.menu-btn').classList.add('show')
-  playMusic()
+  document.getElementById('bg-music').play()
   document.getElementById('eksplorasi')
     .scrollIntoView({behavior:'smooth'})
+}
+
+function showExplore(key,el){
+  document.querySelectorAll('.card').forEach(c=>c.classList.remove('show'))
+  document.querySelectorAll('.explore-tabs button')
+    .forEach(b=>b.classList.remove('active'))
+
+  document.querySelector(`[data-explore="${key}"]`)
+    .classList.add('show')
+  el.classList.add('active')
 }
 
 function toggleMenu(){
