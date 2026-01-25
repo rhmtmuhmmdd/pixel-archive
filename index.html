@@ -33,16 +33,23 @@ header{
   background:#fff;
   border-bottom:1px solid #ddd;
   z-index:1000;
-  padding:.8rem 1.5rem;
+  padding:.7rem 1rem;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  gap:1rem;
 }
 
 .logo{
   color:var(--fb-blue);
   font-weight:700;
-  font-size:1.4rem;
+  font-size:1.3rem;
+}
+
+/* MENU */
+.menu-btn{
+  font-size:1.9rem;
+  cursor:pointer;
+  display:none;
 }
 
 nav ul{
@@ -56,12 +63,11 @@ nav a{
   font-weight:600;
   text-decoration:none;
 }
-
 nav a:hover{color:var(--fb-blue)}
 
 /* HERO */
 .hero{
-  margin-top:70px;
+  margin-top:65px;
   height:60vh;
   background:url('Foto1.jpg') center/cover;
   position:relative;
@@ -83,7 +89,7 @@ nav a:hover{color:var(--fb-blue)}
   max-width:700px;
 }
 
-.hero h1{font-size:2.4rem}
+.hero h1{font-size:2.3rem}
 .hero p{opacity:.9;margin:1rem 0}
 
 .cta-button{
@@ -97,9 +103,9 @@ nav a:hover{color:var(--fb-blue)}
   margin-right:.5rem;
 }
 
-/* FEED */
+/* SECTION */
 .section{
-  max-width:680px;
+  max-width:700px;
   margin:auto;
   padding:2rem 1rem;
 }
@@ -110,32 +116,33 @@ nav a:hover{color:var(--fb-blue)}
   margin-bottom:1rem;
 }
 
-/* POST CARD */
+/* EXPLORATION CARD */
 .card{
   background:var(--card);
   border-radius:var(--radius);
   margin-bottom:1.5rem;
   box-shadow:0 1px 2px rgba(0,0,0,.1);
   overflow:hidden;
+  transition:.25s;
 }
+.card:hover{transform:translateY(-4px)}
 
 .card img{
   width:100%;
-  height:320px;
-  object-fit:cover;
+  height:auto;
+  max-height:420px;
+  object-fit:contain;
+  background:#000;
 }
 
-.card h3{
-  padding:1rem 1rem .3rem;
-}
-
+.card h3{padding:1rem 1rem .3rem}
 .card p{
   padding:0 1rem 1rem;
   color:var(--muted);
   font-size:.95rem;
 }
 
-/* GALERI */
+/* GALLERY */
 .galeri,.blog{display:none}
 .galeri.show,.blog.show{display:block}
 
@@ -146,7 +153,7 @@ nav a:hover{color:var(--fb-blue)}
 }
 
 .carousel img{
-  width:220px;
+  width:230px;
   height:150px;
   object-fit:cover;
   border-radius:10px;
@@ -176,7 +183,7 @@ nav a:hover{color:var(--fb-blue)}
   color:var(--muted);
 }
 
-/* FOOTER */
+/* SOCIAL */
 .social-links{
   text-align:center;
   padding:2rem 0;
@@ -184,15 +191,38 @@ nav a:hover{color:var(--fb-blue)}
 
 .social-links a{
   margin:0 .8rem;
-  color:var(--muted);
+  color:var(--fb-blue);
   font-weight:600;
+  text-decoration:none;
 }
 
+/* MUSIC */
 .music-player{display:none}
 
 /* MOBILE */
 @media(max-width:768px){
-  .hero h1{font-size:1.9rem}
+  .menu-btn{display:block}
+
+  nav{
+    position:fixed;
+    top:60px;
+    left:-100%;
+    width:70%;
+    height:100vh;
+    background:#fff;
+    transition:.3s;
+    padding-top:2rem;
+    box-shadow:2px 0 10px rgba(0,0,0,.15);
+  }
+  nav.show{left:0}
+
+  nav ul{
+    flex-direction:column;
+    padding-left:1.5rem;
+    gap:1.3rem;
+  }
+
+  .hero h1{font-size:1.8rem}
   .blog-item{flex-direction:column}
 }
 </style>
@@ -208,15 +238,16 @@ nav a:hover{color:var(--fb-blue)}
 </div>
 
 <header>
-<div class="logo">rhmtmuhmmdd</div>
-<nav>
-<ul>
-<li><a href="#hero">Home</a></li>
-<li><a href="#eksplorasi">Exploration</a></li>
-<li><a href="#galeri">Gallery</a></li>
-<li><a href="#blog">2026 Plan</a></li>
-</ul>
-</nav>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <div class="logo">rhmtmuhmmdd</div>
+  <nav id="menu">
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#eksplorasi">Exploration</a></li>
+      <li><a href="#galeri">Gallery</a></li>
+      <li><a href="#blog">2026 Plan</a></li>
+    </ul>
+  </nav>
 </header>
 
 <section id="hero" class="hero">
@@ -236,7 +267,6 @@ nav a:hover{color:var(--fb-blue)}
 <div class="card"><img src="Foto4.jpg"><h3>Danau Slank</h3><p>Danau Slank adalah danau alami di Gowa...</p></div>
 <div class="card"><img src="Foto5.jpg"><h3>Danau Tanralili</h3><p>Danau Tanralili adalah danau berair jernih...</p></div>
 <div class="card"><img src="Foto6.jpg"><h3>Lembah Lohe</h3><p>Lembah Lohe adalah destinasi alam di Gowa...</p></div>
-
 </section>
 
 <section id="galeri" class="section galeri">
@@ -260,25 +290,29 @@ nav a:hover{color:var(--fb-blue)}
 <img src="FotoPlan02.jpg">
 <div><h3>MT.Bahonglangi</h3><p>Gunung Bahong Langi dikenal sebagai Atap Bone...</p></div>
 </div>
-
 </section>
 
 <div class="social-links">
-<a href="#">Facebook</a>
-<a href="#">Instagram</a>
-<a href="#">TikTok</a>
+<a href="https://facebook.com/USERNAME" target="_blank">Facebook</a>
+<a href="https://instagram.com/USERNAME" target="_blank">Instagram</a>
+<a href="https://tiktok.com/@USERNAME" target="_blank">TikTok</a>
 </div>
 
 <script>
 function playMusic(){
-document.getElementById('bg-music').play()
+  document.getElementById('bg-music').play()
 }
 
 function showExploration(){
-document.getElementById('galeri').classList.add('show')
-document.getElementById('blog').classList.add('show')
-playMusic()
-document.getElementById('eksplorasi').scrollIntoView({behavior:'smooth'})
+  document.getElementById('galeri').classList.add('show')
+  document.getElementById('blog').classList.add('show')
+  playMusic()
+  document.getElementById('eksplorasi')
+    .scrollIntoView({behavior:'smooth'})
+}
+
+function toggleMenu(){
+  document.getElementById('menu').classList.toggle('show')
 }
 </script>
 
