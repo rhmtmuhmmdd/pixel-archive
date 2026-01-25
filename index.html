@@ -25,7 +25,7 @@ body{
   color:var(--text);
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 header{
   position:fixed;
   top:0;
@@ -63,18 +63,17 @@ nav ul{
   display:flex;
   gap:1.5rem;
 }
-
 nav a{
   color:var(--muted);
   font-weight:600;
   text-decoration:none;
 }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero{
   margin-top:65px;
   height:60vh;
-  background:url('Foto1.jpg') center/cover;
+  background:url('SampulLatimojong.jpg') center/cover;
   position:relative;
   display:flex;
   align-items:flex-end;
@@ -98,20 +97,24 @@ nav a{
   border-radius:999px;
   font-weight:600;
   cursor:pointer;
-  margin-right:.5rem;
 }
 
-/* SECTION */
+/* ===== SECTION ===== */
 .section{
-  max-width:700px;
+  max-width:720px;
   margin:auto;
   padding:2rem 1rem;
 }
+.section h2{
+  color:var(--muted);
+  margin-bottom:1rem;
+}
 
+/* ===== VISIBILITY CONTROL ===== */
 .eksplorasi,.galeri,.blog{display:none}
 .eksplorasi.show,.galeri.show,.blog.show{display:block}
 
-/* EXPLORE MENU */
+/* ===== EXPLORE TABS ===== */
 .explore-tabs{
   display:flex;
   gap:.6rem;
@@ -132,7 +135,7 @@ nav a{
   color:#fff;
 }
 
-/* CARD */
+/* ===== CARD ===== */
 .card{
   background:#fff;
   border-radius:12px;
@@ -142,20 +145,55 @@ nav a{
   display:none;
 }
 .card.show{display:block}
-
 .card img{
   width:100%;
-  object-fit:contain;
   background:#000;
 }
 .card h3{padding:1rem .9rem .3rem}
 .card p{padding:0 .9rem 1rem;color:var(--muted)}
 
+/* ===== GALLERY ===== */
+.carousel{
+  display:flex;
+  gap:.8rem;
+  overflow-x:auto;
+}
+.carousel img{
+  width:230px;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+/* ===== BLOG ===== */
+.blog-item{
+  background:#fff;
+  border-radius:12px;
+  padding:1rem;
+  display:flex;
+  gap:1rem;
+  margin-bottom:1.2rem;
+}
+.blog-item img{
+  width:120px;
+  height:90px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+/* ===== SOCIAL ===== */
 .social-links{
   text-align:center;
   padding:2rem 0;
 }
+.social-links a{
+  margin:0 .7rem;
+  color:var(--fb-blue);
+  font-weight:600;
+  text-decoration:none;
+}
 
+/* ===== MOBILE ===== */
 @media(max-width:768px){
   nav{
     position:fixed;
@@ -192,7 +230,7 @@ nav a{
   </nav>
 </header>
 
-<section class="hero" id="hero">
+<section id="hero" class="hero">
   <div class="hero-content">
     <h1>Saves steps in frames</h1>
     <p>Every step has a story.</p>
@@ -200,6 +238,7 @@ nav a{
   </div>
 </section>
 
+<!-- ===== EXPLORATION ===== -->
 <section id="eksplorasi" class="section eksplorasi">
 <h2>Exploration</h2>
 
@@ -240,16 +279,50 @@ nav a{
   <h3>Lembah Lohe</h3>
   <p>Lembah Lohe adalah destinasi alam di Gowa...</p>
 </div>
-
 </section>
 
+<!-- ===== GALLERY ===== -->
+<section id="galeri" class="section galeri">
+<h2>Gallery</h2>
+<div class="carousel">
+  <img src="Foto30.jpg"><img src="Foto31.jpg"><img src="Foto32.jpg">
+  <img src="Foto33.jpg"><img src="Foto34.jpg"><img src="Foto355.jpg">
+</div>
+</section>
+
+<!-- ===== 2026 PLAN ===== -->
+<section id="blog" class="section blog">
+<h2>2026 Plan</h2>
+
+<div class="blog-item">
+  <img src="FotoPlan01.jpg">
+  <div>
+    <h3>MT. Latimojong</h3>
+    <p>Target pendakian gunung tertinggi Sulawesi.</p>
+  </div>
+</div>
+
+<div class="blog-item">
+  <img src="FotoPlan02.jpg">
+  <div>
+    <h3>MT. Bahonglangi</h3>
+    <p>Dikenal sebagai Atap Bone.</p>
+  </div>
+</div>
+</section>
+
+<!-- ===== SOCIAL ===== -->
 <div class="social-links">
   <a href="https://instagram.com/USERNAME" target="_blank">Instagram</a>
+  <a href="https://tiktok.com/@USERNAME" target="_blank">TikTok</a>
+  <a href="https://facebook.com/USERNAME" target="_blank">Facebook</a>
 </div>
 
 <script>
 function showExploration(){
   document.getElementById('eksplorasi').classList.add('show')
+  document.getElementById('galeri').classList.add('show')
+  document.getElementById('blog').classList.add('show')
   document.querySelector('.menu-btn').classList.add('show')
   document.getElementById('bg-music').play()
   document.getElementById('eksplorasi')
@@ -261,8 +334,7 @@ function showExplore(key,el){
   document.querySelectorAll('.explore-tabs button')
     .forEach(b=>b.classList.remove('active'))
 
-  document.querySelector(`[data-explore="${key}"]`)
-    .classList.add('show')
+  document.querySelector(`[data-explore="${key}"]`).classList.add('show')
   el.classList.add('active')
 }
 
