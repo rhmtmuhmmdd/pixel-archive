@@ -1,431 +1,203 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>rhmtmuhmmdd</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --fb-blue:#1877f2;
-  --bg:#f0f2f5;
-  --card:#ffffff;
-  --text:#050505;
-  --muted:#65676b;
-  --radius:12px;
-}
-
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-  font-family:'Montserrat',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-
-/* ===== HEADER ===== */
-header{
-  position:fixed;
-  top:0;
-  width:100%;
-  background:#fff;
-  border-bottom:1px solid #ddd;
-  z-index:1000;
-  padding:.7rem 1rem;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Time</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Poppins', sans-serif; background:#000; color:#fff; }
+    a { text-decoration:none; color:inherit; }/* ===== NAVBAR ===== */
+header {
+  position:absolute;
+  top:0; left:0; width:100%;
+  padding:20px 60px;
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  gap:1rem;
+  z-index:10;
 }
-
-.logo{
-  color:var(--fb-blue);
-  font-weight:700;
-  font-size:1.3rem;
-}
-
-.menu-btn{
-  font-size:1.9rem;
-  cursor:pointer;
-  display:none;
-  opacity:0;
-  pointer-events:none;
-}
-.menu-btn.show{
-  display:block;
-  opacity:1;
-  pointer-events:auto;
-}
-
-nav ul{
-  list-style:none;
-  display:flex;
-  gap:1.5rem;
-}
-nav a{
-  color:var(--muted);
-  font-weight:600;
-  text-decoration:none;
-}
+.logo { font-weight:600; letter-spacing:1px; }
+nav ul { display:flex; gap:30px; list-style:none; font-size:14px; }
 
 /* ===== HERO ===== */
-.hero{
-  margin-top:65px;
-  height:60vh;
-  background:url('Foto1.jpg') center/cover;
-  position:relative;
+.hero {
+  height:100vh;
+  background:linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.85)), url('foto1.jpg') center/cover no-repeat;
   display:flex;
-  align-items:flex-end;
+  align-items:center;
+  padding:0 60px;
 }
-.hero::before{
+.hero-content { max-width:600px; }
+.hero h1 { font-size:64px; font-weight:700; margin-bottom:20px; }
+.hero p { font-size:14px; line-height:1.8; opacity:.85; }
+
+.hero-menu {
+  margin-top:40px;
+  display:flex;
+  gap:40px;
+}
+.hero-menu div {
+  font-size:13px;
+  opacity:.9;
+}
+.hero-menu span { display:block; font-size:11px; opacity:.6; margin-top:6px; }
+
+.slider-number {
+  position:absolute;
+  right:60px;
+  top:50%;
+  transform:translateY(-50%);
+  text-align:right;
+  font-size:14px;
+  line-height:2;
+  opacity:.7;
+}
+
+/* ===== POPULAR TOURS ===== */
+.section { padding:80px 60px; }
+.section h2 { text-align:center; font-size:26px; margin-bottom:10px; }
+.section p { text-align:center; font-size:13px; opacity:.6; margin-bottom:50px; }
+
+.tours {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+.tour-card {
+  position:relative;
+  height:280px;
+  background-size:cover;
+  background-position:center;
+  border-radius:4px;
+  overflow:hidden;
+}
+.tour-card::after {
   content:'';
   position:absolute;
   inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.6),rgba(0,0,0,.1));
+  background:linear-gradient(to top, rgba(0,0,0,.8), rgba(0,0,0,.1));
 }
-.hero-content{
+.tour-card h3 {
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  z-index:2;
+  font-size:18px;
+}
+.tour-card span {
+  display:block;
+  font-size:12px;
+  opacity:.7;
+}
+
+.more-btn {
+  margin:40px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-size:14px;
+  opacity:.8;
+}
+
+/* ===== VIDEO SECTION ===== */
+.video-section {
+  background:linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.95)), url('foto6.jpg') center/cover no-repeat;
+  padding:100px 60px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+.video-section h2 { font-size:48px; margin-bottom:20px; }
+.video-section p { font-size:14px; opacity:.7; max-width:400px; }
+.watch { margin-top:30px; font-size:14px; opacity:.9; }
+
+.video-thumb {
+  display:flex;
+  gap:20px;
+}
+.video-thumb div {
+  flex:1;
+  height:160px;
+  background-size:cover;
+  background-position:center;
+  border-radius:4px;
   position:relative;
-  color:#fff;
-  padding:2rem;
 }
-.hero p{
-  opacity:.9;
-  margin:1rem 0 1.8rem;
-}  
-.cta-button{
-  background:var(--fb-blue);
-  color:#fff;
-  border:none;
-  padding:.6rem 1.5rem;
-  border-radius:999px;
-  font-weight:600;
-  cursor:pointer;
-}
-
-/* ===== SECTION ===== */
-.section{
-  max-width:720px;
-  margin:auto;
-  padding:2rem 1rem;
-}
-.section h2{
-  color:var(--muted);
-  margin-bottom:1rem;
-}
-
-/* ===== VISIBILITY CONTROL ===== */
-.eksplorasi,.galeri,.blog{display:none}
-.eksplorasi.show,.galeri.show,.blog.show{display:block}
-
-/* ===== EXPLORE TABS ===== */
-.explore-tabs{
+.video-thumb div::after {
+  content:'▶';
+  position:absolute;
+  inset:0;
   display:flex;
-  gap:.6rem;
-  overflow-x:auto;
-  padding-bottom:.8rem;
-}
-.explore-tabs button{
-  border:none;
-  background:#e4e6eb;
-  padding:.45rem 1.1rem;
-  border-radius:999px;
-  font-weight:600;
-  cursor:pointer;
-  white-space:nowrap;
-}
-.explore-tabs button.active{
-  background:var(--fb-blue);
-  color:#fff;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  background:rgba(0,0,0,.3);
 }
 
-/* ===== CARD ===== */
-.card{
-  background:#fff;
-  border-radius:12px;
-  margin-top:1rem;
-  box-shadow:0 1px 2px rgba(0,0,0,.1);
-  overflow:hidden;
-  display:none;
-}
-.card.show{display:block}
-.card img{
-  width:100%;
-  background:#000;
-}
-.card h3{padding:1rem .9rem .3rem}
-.card p{padding:0 .9rem 1rem;color:var(--muted)}
+footer { padding:40px; text-align:right; font-size:11px; opacity:.5; }
 
-/* ===== GALLERY ===== */
-.carousel{
-  display:flex;
-  gap:.8rem;
-  overflow-x:auto;
-}
-.carousel img{
-  width:230px;
-  height:150px;
-  object-fit:cover;
-  border-radius:10px;
+@media(max-width:900px){
+  header, .hero, .section, .video-section { padding:20px; }
+  .hero h1 { font-size:42px; }
+  .tours { grid-template-columns:repeat(2,1fr); }
+  .video-section { grid-template-columns:1fr; }
 }
 
-/* ===== BLOG ===== */
-.blog-item{
-  background:#fff;
-  border-radius:12px;
-  padding:1rem;
-  display:flex;
-  gap:1rem;
-  margin-bottom:1.2rem;
-}
-.blog-item img{
-  width:120px;
-  height:90px;
-  object-fit:cover;
-  border-radius:10px;
-}
-
-/* ===== SOCIAL ===== */
-.social-links{
-  text-align:center;
-  padding:2rem 0;
-}
-.social-links a{
-  margin:0 .7rem;
-  color:var(--fb-blue);
-  font-weight:600;
-  text-decoration:none;
-}
-
-/* ===== MOBILE ===== */
-@media(max-width:768px){
-  nav{
-    position:fixed;
-    top:60px;
-    left:-100%;
-    width:70%;
-    height:100vh;
-    background:#fff;
-    padding-top:2rem;
-    transition:.3s;
-  }
-  nav.show{left:0}
-  nav ul{flex-direction:column;padding-left:1.5rem}
-}
-</style>
+  </style>
 </head>
-
-<body>
-
-<audio id="bg-music" loop>
-<source src="musik009.mp3" type="audio/mpeg">
-</audio>
-
-<header>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
-  <div class="logo">rhmtmuhmmdd</div>
-  <nav id="menu">
+<body><header>
+  <div class="logo">AESTHETIC EDITING</div>
+  <nav>
     <ul>
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#eksplorasi">Exploration</a></li>
-      <li><a href="#galeri">Gallery</a></li>
-      <li><a href="#blog">2026 Plan</a></li>
+      <li>HOME</li>
+      <li>ABOUT US</li>
+      <li>TOURS</li>
+      <li>GALLERY</li>
+      <li>REVIEWS</li>
+      <li>CONTACTS</li>
     </ul>
   </nav>
-</header>
-
-<section id="hero" class="hero">
+</header><section class="hero">
   <div class="hero-content">
-    <h1>Saves steps in frames</h1>
-    <p>Every step has a story.</p>
-    <button class="cta-button" onclick="showExploration()">Explore</button>
+    <h1>TRAVEL TIME</h1>
+    <p>Interacting, recognizing, and enjoying the beauty of nature will make us aware to preserve and protect Indonesia's nature.</p><div class="hero-menu">
+  <div>Indonesian mountain tour<span>MORE DETAILED →</span></div>
+  <div>Indonesian beach tour<span>MORE DETAILED →</span></div>
+  <div>Indonesian cultural tour<span>MORE DETAILED →</span></div>
+</div>
+
+  </div>  <div class="slider-number">
+    01<br>02<br>03<br>04<br>05
   </div>
-</section>
-
-<!-- ===== EXPLORATION ===== -->
-<section id="eksplorasi" class="section eksplorasi">
-<h2>Exploration</h2>
-
-<div class="explore-tabs">
-  <button onclick="showExplore('talung',this)">Talung</button>
-  <button onclick="showExplore('ramma',this)">Ramma</button>
-  <button onclick="showExplore('slank',this)">Slank</button>
-  <button onclick="showExplore('tanralili',this)">Tanralili</button>
-  <button onclick="showExplore('lohe',this)">Lohe</button>
-  <button onclick="showExplore('Bialo',this)">Bialo</button>
-  <button onclick="showExplore('Kappire',this)">Kappire</button>
-  <button onclick="showExplore('Bulusaraung',this)">Bulusaraung</button>
-  <button onclick="showExplore('Bawakaraeng',this)">Bawakaraeng</button>
-  <button onclick="showExplore('Tomagelli',this)">Tomagelli</button>
-  <button onclick="showExplore('Massimpolongnge',this)">Massimpolongnge</button>
-  <button onclick="showExplore('Maddo',this)">Maddo</button>
-</div>
-
-<div class="card" data-explore="talung">
-  <img src="Foto2.jpg">
-  <h3>Puncak Talung</h3>
-  <p>Puncak Talung adalah tempat di mana lelah pendakian terbayar...</p>
-</div>
-
-<div class="card" data-explore="ramma">
-  <img src="Foto3.jpg">
-  <h3>Lembah Ramma</h3>
-  <p>Lembah Ramma terletak di kawasan Gunung Bawakaraeng...</p>
-</div>
-
-<div class="card" data-explore="slank">
-  <img src="Foto4.jpg">
-  <h3>Danau Slank</h3>
-  <p>Danau Slank adalah danau alami di Gowa...</p>
-</div>
-
-<div class="card" data-explore="tanralili">
-  <img src="Foto5.jpg">
-  <h3>Danau Tanralili</h3>
-  <p>Danau Tanralili adalah danau berair jernih...</p>
-</div>
-
-<div class="card" data-explore="lohe">
-  <img src="Foto6.jpg">
-  <h3>Lembah Lohe</h3>
-  <p>Lembah Lohe adalah destinasi alam di Gowa...</p>
-</div>
-
-  <div class="card" data-explore="Bialo">
-  <img src="Foto7.jpg">
-  <h3>Bulu Bialo</h3>
-  <p>Bulu Bialo terletak di kabupaten Jeneponto...</p>
-</div>
-
-  <div class="card" data-explore="Kappire">
-  <img src="Foto8.jpg">
-  <h3>Mt Kappire</h3>
-  <p>Terletak di Kabupaten barru...</p>
-</div>
-
-  <div class="card" data-explore="Bulusaraung">
-  <img src="Foto9.jpg">
-  <h3>BuluSaraung</h3>
-  <p>Bulusaraung terletak di kabupaten Pangkajene dan Kepulauan (pangkep)...</p>
-</div>
-
-  <div class="card" data-explore="Bawakaraeng">
-  <img src="Foto10.jpg">
-  <h3>Mt Bawakaraeng</h3>
-  <p>Bawakaraeng aadalah destinasi alam di Kabupaten Sinjai...</p>
-</div>
-
-  <div class="card" data-explore="Massimpolongnge">
-  <img src="Foto11.jpg">
-  <h3>Mt Massimpolongnge</h3>
-  <p>terletak di kabupaten Soppeng...</p>
-</div>
-
-  <div class="card" data-explore="Tomagelli">
-  <img src="Foto12.jpg">
-  <h3>Air Terjun Tomagelli</h3>
-  <p>terletak di Kabupaten Barru, Sulawesi Selatan..</p>
-</div>
-
-  <div class="card" data-explore="Maddo">
-  <img src="Foto13.jpg">
-  <h3>Bukit Maddo</h3>
-  <p>terletak di Kabupaten Barru..</p>
-</div>
-</section>
-
-<!-- ===== GALLERY ===== -->
-<section id="galeri" class="section galeri">
-<h2>Gallery</h2>
-<div class="carousel">
-  <img src="Foto30.jpg"><img src="Foto31.jpg"><img src="Foto32.jpg">
-  <img src="Foto33.jpg"><img src="Foto34.jpg"><img src="Foto35.jpg">
-  <img src="Foto36.jpg"><img src="Foto37.jpg"><img src="Foto38.jpg">
-  <img src="Foto39.jpg"><img src="Foto40.jpg"><img src="Foto41.jpg">
-  <img src="Foto42.jpg"><img src="Foto43.jpg"><img src="Foto44.jpg">
-  <img src="Foto45.jpg"><img src="Foto46.jpg"><img src="Foto47.jpg">
-</div>
-</section>
-
-<!-- ===== 2026 PLAN ===== -->
-<section id="blog" class="section blog">
-<h2>2026 Plan</h2>
-
-<div class="blog-item">
-  <img src="FotoPlan01.jpg">
+</section><section class="section">
+  <h2>POPULAR TOURS</h2>
+  <p>Popular for now</p>  <div class="tours">
+    <div class="tour-card" style="background-image:url('foto2.jpg')">
+      <h3>TOUR 1<span>Jam Gadang, Sumatra</span></h3>
+    </div>
+    <div class="tour-card" style="background-image:url('foto3.jpg')">
+      <h3>TOUR 2<span>Nusa Penida, Bali</span></h3>
+    </div>
+    <div class="tour-card" style="background-image:url('foto4.jpg')">
+      <h3>TOUR 3<span>Pasar Terapung, Kalimantan</span></h3>
+    </div>
+    <div class="tour-card" style="background-image:url('foto5.jpg')">
+      <h3>TOUR 4<span>Raja Ampat, Papua</span></h3>
+    </div>
+  </div>  <div class="more-btn">MORE →</div>
+</section><section class="video-section">
   <div>
-    <h3>MT. Latimojong</h3>
-    <p>Target pendakian gunung tertinggi Sulawesi.</p>
+    <h2>EXPLORE NATURAL WONDERS IN INDONESIA</h2>
+    <p>Indonesia has a stunning panorama of beaches, seas, mountains, waterfalls, forests, and other natural attractions.</p>
+    <div class="watch">▶ WATCH THE VIDEO</div>
+  </div>  <div class="video-thumb">
+    <div style="background-image:url('foto7.jpg')"></div>
+    <div style="background-image:url('foto8.jpg')"></div>
   </div>
-</div>
-
-<div class="blog-item">
-  <img src="FotoPlan02.jpg">
-  <div>
-    <h3>MT. Bahonglangi</h3>
-    <p>Dikenal sebagai Atap Bone.</p>
-  </div>
-</div>
-
-<div class="blog-item">
-  <img src="FotoPlan03.jpg">
-  <div>
-    <h3>Bulu Baria</h3>
-    <p>Target pendakian gunung terbersih Sulawesi Selatan</p>
-  </div>
-</div>
-
-<div class="blog-item">
-  <img src="FotoPlan04.jpg">
-  <div>
-    <h3>Mt. Tondong Karambu</h3>
-    <p>Target pendakian gunung yang terletak di Kabupaten Barru, atau o3bih dikenal dengan "Atap Barru"</p>
-  </div>
-</div>
-
-<div class="blog-item">
-  <img src="FotoPlan05.jpg">
-  <div>
-    <h3>MT. Lompobattang</h3>
-    <p>Target pendakian gunung yg terletak di Kabupaten Jeneponto</p>
-  </div>
-</div>
-
-
-
-</section>
-
-<!-- ===== SOCIAL ===== -->
-<div class="social-links">
-  <a href="https://instagram.com/rhmtmuhmmdd" target="_blank">Instagram</a>
-  <a href="https://tiktok.com/@rhmtmuhmmdd" target="_blank">TikTok</a>
-  <a href="https://facebook.com/USERNAME" target="_blank">Facebook</a>
-</div>
-
-<script>
-function showExploration(){
-  document.getElementById('eksplorasi').classList.add('show')
-  document.getElementById('galeri').classList.add('show')
-  document.getElementById('blog').classList.add('show')
-  document.querySelector('.menu-btn').classList.add('show')
-  document.getElementById('bg-music').play()
-  document.getElementById('eksplorasi')
-    .scrollIntoView({behavior:'smooth'})
-}
-
-function showExplore(key,el){
-  document.querySelectorAll('.card').forEach(c=>c.classList.remove('show'))
-  document.querySelectorAll('.explore-tabs button')
-    .forEach(b=>b.classList.remove('active'))
-
-  document.querySelector(`[data-explore="${key}"]`).classList.add('show')
-  el.classList.add('active')
-}
-
-function toggleMenu(){
-  document.getElementById('menu').classList.toggle('show')
-}
-</script>
-
-</body>
+</section><footer>
+  Pick by Pinterest<br>Instastory by @mhmh179
+</footer></body>
 </html>
