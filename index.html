@@ -5,197 +5,143 @@
   <title>Travel Time</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Poppins', sans-serif; background:#000; color:#fff; }
-    a { text-decoration:none; color:inherit; }/* ===== NAVBAR ===== */
-header {
-  position:absolute;
-  top:0; left:0; width:100%;
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Poppins',sans-serif;background:#000;color:#fff}
+    a{text-decoration:none;color:#fff}/* ===== NAVBAR ===== */
+header{
+  position:fixed;
+  top:0;left:0;width:100%;
   padding:20px 60px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,0));
+  z-index:1000;
 }
-.logo { font-weight:600; letter-spacing:1px; }
-nav ul { display:flex; gap:30px; list-style:none; font-size:14px; }
+.logo{font-weight:600;letter-spacing:1px}
+nav ul{display:flex;gap:30px;list-style:none;font-size:14px}
+nav ul li a{opacity:.8;transition:.3s}
+nav ul li a:hover{opacity:1;border-bottom:2px solid #fff;padding-bottom:4px}
 
 /* ===== HERO ===== */
-.hero {
+.hero{
+  position:relative;
   height:100vh;
-  background:linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.85)), url('foto1.jpg') center/cover no-repeat;
-  display:flex;
-  align-items:center;
+  background:url('foto1.jpg') center/cover no-repeat;
+  display:flex;align-items:center;
   padding:0 60px;
 }
-.hero-content { max-width:600px; }
-.hero h1 { font-size:64px; font-weight:700; margin-bottom:20px; }
-.hero p { font-size:14px; line-height:1.8; opacity:.85; }
-
-.hero-menu {
-  margin-top:40px;
-  display:flex;
-  gap:40px;
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.2),rgba(0,0,0,.9));
 }
-.hero-menu div {
-  font-size:13px;
-  opacity:.9;
-}
-.hero-menu span { display:block; font-size:11px; opacity:.6; margin-top:6px; }
+.hero-content{position:relative;z-index:2;max-width:600px}
+.hero h1{font-size:64px;font-weight:700;margin-bottom:20px}
+.hero p{font-size:14px;line-height:1.8;opacity:.85}
 
-.slider-number {
-  position:absolute;
-  right:60px;
-  top:50%;
-  transform:translateY(-50%);
-  text-align:right;
-  font-size:14px;
-  line-height:2;
-  opacity:.7;
+.hero-menu{margin-top:40px;display:flex;gap:40px}
+.hero-menu a{font-size:13px;opacity:.85;transition:.3s}
+.hero-menu a:hover{opacity:1}
+.hero-menu span{display:block;font-size:11px;opacity:.6;margin-top:6px}
+
+.slider-number{
+  position:absolute;right:60px;top:50%;transform:translateY(-50%);
+  z-index:2;font-size:14px;line-height:2;opacity:.7
 }
 
-/* ===== POPULAR TOURS ===== */
-.section { padding:80px 60px; }
-.section h2 { text-align:center; font-size:26px; margin-bottom:10px; }
-.section p { text-align:center; font-size:13px; opacity:.6; margin-bottom:50px; }
+/* ===== SECTION ===== */
+section{position:relative}
+.section{padding:100px 60px}
+.section h2{text-align:center;font-size:26px;margin-bottom:10px}
+.section p{text-align:center;font-size:13px;opacity:.6;margin-bottom:50px}
 
-.tours {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-}
-.tour-card {
-  position:relative;
-  height:280px;
-  background-size:cover;
-  background-position:center;
-  border-radius:4px;
-  overflow:hidden;
-}
-.tour-card::after {
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.8), rgba(0,0,0,.1));
-}
-.tour-card h3 {
-  position:absolute;
-  bottom:20px;
-  left:20px;
-  z-index:2;
-  font-size:18px;
-}
-.tour-card span {
-  display:block;
-  font-size:12px;
-  opacity:.7;
-}
+/* ===== TOURS ===== */
+.tours{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tour-card{position:relative;height:280px;background-size:cover;background-position:center;overflow:hidden}
+.tour-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.2))}
+.tour-card div{position:absolute;bottom:20px;left:20px;z-index:2}
+.tour-card h3{font-size:18px}
+.tour-card span{font-size:12px;opacity:.7}
 
-.more-btn {
-  margin:40px auto 0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  font-size:14px;
-  opacity:.8;
+.more-btn{text-align:center;margin-top:40px;font-size:14px;opacity:.8}
+
+/* ===== VIDEO ===== */
+.video-section{
+  background:url('foto6.jpg') center/cover no-repeat;
+  padding:120px 60px;
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center
+}
+.video-section::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,.95))
+}
+.video-section > *{position:relative;z-index:2}
+.video-section h2{font-size:46px;margin-bottom:20px}
+.video-section p{font-size:14px;opacity:.75;max-width:420px}
+.watch{margin-top:30px;font-size:14px}
+
+.video-thumb{display:flex;gap:20px}
+.video-thumb a{
+  flex:1;height:160px;background-size:cover;background-position:center;position:relative
+}
+.video-thumb a::after{
+  content:'▶';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:34px;background:rgba(0,0,0,.35)
 }
 
-/* ===== VIDEO SECTION ===== */
-.video-section {
-  background:linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.95)), url('foto6.jpg') center/cover no-repeat;
-  padding:100px 60px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
-}
-.video-section h2 { font-size:48px; margin-bottom:20px; }
-.video-section p { font-size:14px; opacity:.7; max-width:400px; }
-.watch { margin-top:30px; font-size:14px; opacity:.9; }
-
-.video-thumb {
-  display:flex;
-  gap:20px;
-}
-.video-thumb div {
-  flex:1;
-  height:160px;
-  background-size:cover;
-  background-position:center;
-  border-radius:4px;
-  position:relative;
-}
-.video-thumb div::after {
-  content:'▶';
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:32px;
-  background:rgba(0,0,0,.3);
-}
-
-footer { padding:40px; text-align:right; font-size:11px; opacity:.5; }
+footer{padding:40px;text-align:right;font-size:11px;opacity:.5}
 
 @media(max-width:900px){
-  header, .hero, .section, .video-section { padding:20px; }
-  .hero h1 { font-size:42px; }
-  .tours { grid-template-columns:repeat(2,1fr); }
-  .video-section { grid-template-columns:1fr; }
+  header,.hero,.section,.video-section{padding:20px}
+  .hero h1{font-size:42px}
+  .tours{grid-template-columns:repeat(2,1fr)}
+  .video-section{grid-template-columns:1fr}
 }
 
   </style>
 </head>
-<body><header>
+<body><!-- ===== BACKGROUND MUSIC ===== --><audio autoplay loop>
+  <source src="musik.mp3" type="audio/mpeg">
+</audio><header>
   <div class="logo">AESTHETIC EDITING</div>
   <nav>
     <ul>
-      <li>HOME</li>
-      <li>ABOUT US</li>
-      <li>TOURS</li>
-      <li>GALLERY</li>
-      <li>REVIEWS</li>
-      <li>CONTACTS</li>
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#about">ABOUT US</a></li>
+      <li><a href="#tours">TOURS</a></li>
+      <li><a href="#gallery">GALLERY</a></li>
+      <li><a href="#reviews">REVIEWS</a></li>
+      <li><a href="#contact">CONTACTS</a></li>
     </ul>
   </nav>
-</header><section class="hero">
+</header><section class="hero" id="home">
   <div class="hero-content">
     <h1>TRAVEL TIME</h1>
-    <p>Interacting, recognizing, and enjoying the beauty of nature will make us aware to preserve and protect Indonesia's nature.</p><div class="hero-menu">
-  <div>Indonesian mountain tour<span>MORE DETAILED →</span></div>
-  <div>Indonesian beach tour<span>MORE DETAILED →</span></div>
-  <div>Indonesian cultural tour<span>MORE DETAILED →</span></div>
-</div>
-
-  </div>  <div class="slider-number">
-    01<br>02<br>03<br>04<br>05
+    <p>Interacting, recognizing, and enjoying the beauty of nature will make us aware to preserve and protect Indonesia's nature.</p>
+    <div class="hero-menu">
+      <a href="#tours">Indonesian mountain tour<span>MORE DETAILED →</span></a>
+      <a href="#tours">Indonesian beach tour<span>MORE DETAILED →</span></a>
+      <a href="#tours">Indonesian cultural tour<span>MORE DETAILED →</span></a>
+    </div>
   </div>
-</section><section class="section">
+  <div class="slider-number">01<br>02<br>03<br>04<br>05</div>
+</section><section class="section" id="tours">
   <h2>POPULAR TOURS</h2>
-  <p>Popular for now</p>  <div class="tours">
-    <div class="tour-card" style="background-image:url('foto2.jpg')">
-      <h3>TOUR 1<span>Jam Gadang, Sumatra</span></h3>
-    </div>
-    <div class="tour-card" style="background-image:url('foto3.jpg')">
-      <h3>TOUR 2<span>Nusa Penida, Bali</span></h3>
-    </div>
-    <div class="tour-card" style="background-image:url('foto4.jpg')">
-      <h3>TOUR 3<span>Pasar Terapung, Kalimantan</span></h3>
-    </div>
-    <div class="tour-card" style="background-image:url('foto5.jpg')">
-      <h3>TOUR 4<span>Raja Ampat, Papua</span></h3>
-    </div>
-  </div>  <div class="more-btn">MORE →</div>
-</section><section class="video-section">
+  <p>Popular for now</p>
+  <div class="tours">
+    <div class="tour-card" style="background-image:url('foto2.jpg')"><div><h3>TOUR 1</h3><span>Jam Gadang, Sumatra</span></div></div>
+    <div class="tour-card" style="background-image:url('foto3.jpg')"><div><h3>TOUR 2</h3><span>Nusa Penida, Bali</span></div></div>
+    <div class="tour-card" style="background-image:url('foto4.jpg')"><div><h3>TOUR 3</h3><span>Pasar Terapung, Kalimantan</span></div></div>
+    <div class="tour-card" style="background-image:url('foto5.jpg')"><div><h3>TOUR 4</h3><span>Raja Ampat, Papua</span></div></div>
+  </div>
+  <div class="more-btn">MORE →</div>
+</section><section class="video-section" id="about">
   <div>
     <h2>EXPLORE NATURAL WONDERS IN INDONESIA</h2>
     <p>Indonesia has a stunning panorama of beaches, seas, mountains, waterfalls, forests, and other natural attractions.</p>
     <div class="watch">▶ WATCH THE VIDEO</div>
-  </div>  <div class="video-thumb">
-    <div style="background-image:url('foto7.jpg')"></div>
-    <div style="background-image:url('foto8.jpg')"></div>
+  </div>
+  <div class="video-thumb">
+    <a href="#" style="background-image:url('foto7.jpg')"></a>
+    <a href="#" style="background-image:url('foto8.jpg')"></a>
   </div>
 </section><footer>
   Pick by Pinterest<br>Instastory by @mhmh179
