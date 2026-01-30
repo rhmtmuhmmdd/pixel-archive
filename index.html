@@ -1,149 +1,240 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel Time</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Poppins',sans-serif;background:#000;color:#fff}
-    a{text-decoration:none;color:#fff}/* ===== NAVBAR ===== */
-header{
-  position:fixed;
-  top:0;left:0;width:100%;
-  padding:20px 60px;
-  display:flex;justify-content:space-between;align-items:center;
-  background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,0));
-  z-index:1000;
-}
-.logo{font-weight:600;letter-spacing:1px}
-nav ul{display:flex;gap:30px;list-style:none;font-size:14px}
-nav ul li a{opacity:.8;transition:.3s}
-nav ul li a:hover{opacity:1;border-bottom:2px solid #fff;padding-bottom:4px}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Web Mirip Facebook</title>
+<style>
+  /* Reset dan gaya dasar */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-/* ===== HERO ===== */
-.hero{
-  position:relative;
-  height:100vh;
-  background:url('foto1.jpg') center/cover no-repeat;
-  display:flex;align-items:center;
-  padding:0 60px;
-}
-.hero::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.2),rgba(0,0,0,.9));
-}
-.hero-content{position:relative;z-index:2;max-width:600px}
-.hero h1{font-size:64px;font-weight:700;margin-bottom:20px}
-.hero p{font-size:14px;line-height:1.8;opacity:.85}
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    transition: background-color 0.5s, color 0.5s;
+  }
 
-.hero-menu{margin-top:40px;display:flex;gap:40px}
-.hero-menu a{font-size:13px;opacity:.85;transition:.3s}
-.hero-menu a:hover{opacity:1}
-.hero-menu span{display:block;font-size:11px;opacity:.6;margin-top:6px}
+  /* Mode Dark */
+  body.dark-mode {
+    background-color: #18191a;
+    color: #ddd;
+  }
 
-.slider-number{
-  position:absolute;right:60px;top:50%;transform:translateY(-50%);
-  z-index:2;font-size:14px;line-height:2;opacity:.7
-}
+  /* Header / Sampul */
+  .cover {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-/* ===== SECTION ===== */
-section{position:relative}
-.section{padding:100px 60px}
-.section h2{text-align:center;font-size:26px;margin-bottom:10px}
-.section p{text-align:center;font-size:13px;opacity:.6;margin-bottom:50px}
+  /* Overlay untuk tampilan lebih menarik */
+  .cover::after {
+    content: "";
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background-color: rgba(0,0,0,0.3);
+  }
 
-/* ===== TOURS ===== */
-.tours{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.tour-card{position:relative;height:280px;background-size:cover;background-position:center;overflow:hidden}
-.tour-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.2))}
-.tour-card div{position:absolute;bottom:20px;left:20px;z-index:2}
-.tour-card h3{font-size:18px}
-.tour-card span{font-size:12px;opacity:.7}
+  /* Judul dan tombol */
+  .cover-content {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    z-index: 1;
+  }
 
-.more-btn{text-align:center;margin-top:40px;font-size:14px;opacity:.8}
+  .cover h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
 
-/* ===== VIDEO ===== */
-.video-section{
-  background:url('foto6.jpg') center/cover no-repeat;
-  padding:120px 60px;
-  display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center
-}
-.video-section::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,.95))
-}
-.video-section > *{position:relative;z-index:2}
-.video-section h2{font-size:46px;margin-bottom:20px}
-.video-section p{font-size:14px;opacity:.75;max-width:420px}
-.watch{margin-top:30px;font-size:14px}
+  button {
+    padding: 12px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: #1877f2;
+    color: #fff;
+    transition: background-color 0.3s;
+  }
 
-.video-thumb{display:flex;gap:20px}
-.video-thumb a{
-  flex:1;height:160px;background-size:cover;background-position:center;position:relative
-}
-.video-thumb a::after{
-  content:'▶';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-size:34px;background:rgba(0,0,0,.35)
-}
+  button:hover {
+    background-color: #165ecb;
+  }
 
-footer{padding:40px;text-align:right;font-size:11px;opacity:.5}
+  /* Menu yang muncul setelah tombol ditekan */
+  .menu {
+    display: none;
+    padding: 20px;
+    background-color: #fff;
+    max-width: 1000px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: background-color 0.5s;
+  }
 
-@media(max-width:900px){
-  header,.hero,.section,.video-section{padding:20px}
-  .hero h1{font-size:42px}
-  .tours{grid-template-columns:repeat(2,1fr)}
-  .video-section{grid-template-columns:1fr}
-}
+  body.dark-mode .menu {
+    background-color: #242526;
+    color: #ccc;
+  }
 
-  </style>
+  .menu.active {
+    display: block;
+  }
+
+  /* Menu item (seperti Home dll) */
+  .menu-item {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #e4e6eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  body.dark-mode .menu-item {
+    background-color: #3a3b3c;
+  }
+
+  .menu-item:hover {
+    background-color: #d8dadf;
+  }
+
+  body.dark-mode .menu-item:hover {
+    background-color: #4a4b4c;
+  }
+
+  /* Musik otomatis jalan */
+  audio {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  /* Bagian foto dan caption */
+  .photos {
+    max-width: 1000px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .photo-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: background-color 0.5s;
+  }
+
+  body.dark-mode .photo-card {
+    background-color: #2c2d2e;
+  }
+
+  .photo-card img {
+    width: 100%;
+    display: block;
+  }
+
+  .caption {
+    padding: 10px 15px;
+  }
+
+  /* Mode toggle */
+  .mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #1877f2;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 999;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+  }
+
+  .mode-toggle:hover {
+    background-color: #165ecb;
+  }
+
+</style>
 </head>
-<body><!-- ===== BACKGROUND MUSIC ===== --><audio autoplay loop>
-  <source src="musik.mp3" type="audio/mpeg">
-</audio><header>
-  <div class="logo">AESTHETIC EDITING</div>
-  <nav>
-    <ul>
-      <li><a href="#home">HOME</a></li>
-      <li><a href="#about">ABOUT US</a></li>
-      <li><a href="#tours">TOURS</a></li>
-      <li><a href="#gallery">GALLERY</a></li>
-      <li><a href="#reviews">REVIEWS</a></li>
-      <li><a href="#contact">CONTACTS</a></li>
-    </ul>
-  </nav>
-</header><section class="hero" id="home">
-  <div class="hero-content">
-    <h1>TRAVEL TIME</h1>
-    <p>Interacting, recognizing, and enjoying the beauty of nature will make us aware to preserve and protect Indonesia's nature.</p>
-    <div class="hero-menu">
-      <a href="#tours">Indonesian mountain tour<span>MORE DETAILED →</span></a>
-      <a href="#tours">Indonesian beach tour<span>MORE DETAILED →</span></a>
-      <a href="#tours">Indonesian cultural tour<span>MORE DETAILED →</span></a>
-    </div>
+<body>
+
+<!-- Mode Dark/Light Toggle -->
+<div class="mode-toggle" id="modeToggle">Dark Mode</div>
+
+<!-- Sampul -->
+<div class="cover">
+  <div class="cover-content">
+    <h1>Selamat Datang di Web Mirip Facebook</h1>
+    <button id="exploreBtn">Exploration</button>
   </div>
-  <div class="slider-number">01<br>02<br>03<br>04<br>05</div>
-</section><section class="section" id="tours">
-  <h2>POPULAR TOURS</h2>
-  <p>Popular for now</p>
-  <div class="tours">
-    <div class="tour-card" style="background-image:url('foto2.jpg')"><div><h3>TOUR 1</h3><span>Jam Gadang, Sumatra</span></div></div>
-    <div class="tour-card" style="background-image:url('foto3.jpg')"><div><h3>TOUR 2</h3><span>Nusa Penida, Bali</span></div></div>
-    <div class="tour-card" style="background-image:url('foto4.jpg')"><div><h3>TOUR 3</h3><span>Pasar Terapung, Kalimantan</span></div></div>
-    <div class="tour-card" style="background-image:url('foto5.jpg')"><div><h3>TOUR 4</h3><span>Raja Ampat, Papua</span></div></div>
+</div>
+
+<!-- Menu yang tersembunyi -->
+<div class="menu" id="menu">
+  <div class="menu-item">Home</div>
+  <div class="menu-item">Profile</div>
+  <div class="menu-item">Message</div>
+  <div class="menu-item">Settings</div>
+</div>
+
+<!-- Audio musik otomatis jalan -->
+<audio src="musik.mp3" autoplay loop></audio>
+
+<!-- Foto dan caption -->
+<div class="photos">
+  <div class="photo-card">
+    <img src="foto1.jpg" alt="Foto 1" />
+    <div class="caption">Caption foto 1</div>
   </div>
-  <div class="more-btn">MORE →</div>
-</section><section class="video-section" id="about">
-  <div>
-    <h2>EXPLORE NATURAL WONDERS IN INDONESIA</h2>
-    <p>Indonesia has a stunning panorama of beaches, seas, mountains, waterfalls, forests, and other natural attractions.</p>
-    <div class="watch">▶ WATCH THE VIDEO</div>
+  <div class="photo-card">
+    <img src="foto2.jpg" alt="Foto 2" />
+    <div class="caption">Caption foto 2</div>
   </div>
-  <div class="video-thumb">
-    <a href="#" style="background-image:url('foto7.jpg')"></a>
-    <a href="#" style="background-image:url('foto8.jpg')"></a>
+  <div class="photo-card">
+    <img src="foto3.jpg" alt="Foto 3" />
+    <div class="caption">Caption foto 3</div>
   </div>
-</section><footer>
-  Pick by Pinterest<br>Instastory by @mhmh179
-</footer></body>
+  <!-- Tambahkan lagi sesuai kebutuhan -->
+</div>
+
+<script>
+  // Toggle menu saat tombol "Exploration" ditekan
+  const exploreBtn = document.getElementById('exploreBtn');
+  const menu = document.getElementById('menu');
+
+  exploreBtn.addEventListener('click', () => {
+    menu.classList.toggle('active');
+  });
+
+  // Mode Dark/Light toggle
+  const modeToggle = document.getElementById('modeToggle');
+  modeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    if(document.body.classList.contains('dark-mode')){
+      modeToggle.textContent = 'Light Mode';
+    } else {
+      modeToggle.textContent = 'Dark Mode';
+    }
+  });
+</script>
+
+</body>
 </html>
