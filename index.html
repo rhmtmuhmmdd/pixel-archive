@@ -528,7 +528,7 @@ a { text-decoration: none; }
 #section-journey { padding-top: 64px; background: var(--bg); }
 
 .journey-hero {
-  background: linear-gradient(155deg, #142e12 0%, #070d07 100%);
+  background: linear-gradient(155deg, #2a0d0d 0%, #140606 100%);
   padding: clamp(48px,7vw,100px) clamp(18px,5vw,60px);
   text-align: center;
   position: relative;
@@ -536,9 +536,11 @@ a { text-decoration: none; }
 }
 
 .journey-hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(139,195,74,0.18) 0%, transparent 68%);
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(239,68,68,0.18) 0%,
+    transparent 68%
+  );
   pointer-events: none;
 }
 
